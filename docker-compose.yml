@@ -1,0 +1,32 @@
+
+services:
+  order-flow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: order-flow
+    restart: unless-stopped
+
+    ports:
+      - "8787:8787"
+
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 8787
+
+      MF_PROVIDER: archive
+      MF_BASIC_AUTH: ${MF_BASIC_AUTH:?Authentication required}
+
+      MF_DATA_DIR: /data
+      MF_ARCHIVE_DIR: /app/data/archive
+
+    volumes:
+      - order-flow-data:/data
+      - order-flow-archive:/app/data/archive
+
+volumes:
+  order-flow-data:
+  order-flow-archive:
+
