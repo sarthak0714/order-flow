@@ -16,7 +16,7 @@ services:
       HOST: 0.0.0.0
       PORT: 8787
 
-      MF_PROVIDER: archive
+      MF_PROVIDER: upstox
       MF_BASIC_AUTH: ${MF_BASIC_AUTH:?Authentication required}
 
       MF_DATA_DIR: /data
